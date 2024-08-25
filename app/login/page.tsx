@@ -24,7 +24,7 @@ export default function Login({ searchParams }: { searchParams: Message }) {
       return encodedRedirect("error", "/login", "Could not authenticate user");
     }
 
-    return redirect("/protected");
+    return redirect("/dashboard");
   };
 
   return (

@@ -20,16 +20,16 @@ export default async function ResetPassword({
     if (!password || !confirmPassword) {
       encodedRedirect(
         "error",
-        "/protected/reset-password",
-        "Password and confirm password are required",
+        "/dashboard/reset-password",
+        "Password and confirm password are required"
       );
     }
 
     if (password !== confirmPassword) {
       encodedRedirect(
         "error",
-        "/protected/reset-password",
-        "Passwords do not match",
+        "/dashboard/reset-password",
+        "Passwords do not match"
       );
     }
 
@@ -40,12 +40,12 @@ export default async function ResetPassword({
     if (error) {
       encodedRedirect(
         "error",
-        "/protected/reset-password",
-        "Password update failed",
+        "/dashboard/reset-password",
+        "Password update failed"
       );
     }
 
-    encodedRedirect("success", "/protected/reset-password", "Password updated");
+    encodedRedirect("success", "/dashboard/reset-password", "Password updated");
   };
 
   return (
