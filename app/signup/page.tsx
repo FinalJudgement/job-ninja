@@ -1,15 +1,17 @@
-import { createClient } from "@/utils/supabase/server";
-import { headers } from "next/headers";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 import { SubmitButton } from "../../components/forms/submit-button";
-import { Input } from "@/components/forms/input";
 import { Label } from "@/components/forms/label";
+import { Input } from "@/components/forms/input";
 import { FormMessage, Message } from "@/components/forms/form-message";
 import { encodedRedirect } from "@/utils/utils";
+import { headers } from "next/headers";
 
 export default function Signup({ searchParams }: { searchParams: Message }) {
   const signUp = async (formData: FormData) => {
     "use server";
+    
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
     const supabase = createClient();
@@ -48,7 +50,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
   }
 
   return (
-    <div className="w-full flex-1 flex items-center h-screen sm:max-w-md justify-center gap-2 p-4">
+    <div className="flex flex-col flex-1 p-4 w-full items-center">
       <Link
         href="/"
         className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
@@ -78,7 +80,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
             Log in
           </Link>
         </p>
-        <div className="mt-8 flex flex-col gap-2 [&>input]:mb-3">
+        <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
           <Label htmlFor="email">Email</Label>
           <Input name="email" placeholder="you@example.com" required />
           <Label htmlFor="password">Password</Label>
