@@ -1,5 +1,8 @@
-import { GeistSans } from "geist/font/sans";
-import "./globals.css";
+// This is the root layout component for your Next.js app.
+// Learn more: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
+import { Inter } from 'next/font/google'
+import { cn } from '@/utils/cn'
+import './globals.css'
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -11,18 +14,34 @@ export const metadata = {
   description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-export default function RootLayout({
+const fontHeading = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+})
+
+const fontBody = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+})
+
+export default function Layout({ 
   children,
-}: {
-  children: React.ReactNode;
+}: { 
+  children: React.ReactNode 
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
+    <html lang="en">
+      <body 
+        className={cn(
+          'antialiased',
+          fontHeading.variable,
+          fontBody.variable
+        )}
+      >
+        {children}
       </body>
     </html>
-  );
+  )
 }
