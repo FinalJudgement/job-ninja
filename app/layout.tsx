@@ -11,7 +11,7 @@ const defaultUrl = process.env.VERCEL_URL
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Job Ninja, Jumpstart your career",
-  description: "Applying to jobs has never been this easy.",
+  description: "Finding jobs made easy.",
 };
 
 const fontHeading = Inter({
