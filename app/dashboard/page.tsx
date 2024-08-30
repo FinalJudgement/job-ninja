@@ -4,10 +4,9 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export default async function Index() {
+export default async function Dashboard() {
   const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
+    
     try {
       createClient();
       return true;
@@ -109,12 +108,12 @@ export default async function Index() {
               </div>
             </Link>
             <Link
-              href="#"
+              href="job-board"
               className="group relative overflow-hidden rounded-lg bg-muted/50 transition-all hover:scale-105"
               prefetch={false}
             >
               <img
-                src="/placeholder.svg"
+                src="/assets/job-board.png"
                 width="300"
                 height="300"
                 alt="Job Dashboard"
@@ -122,7 +121,7 @@ export default async function Index() {
                 style={{ aspectRatio: "300/300", objectFit: "cover" }}
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 p-6 text-center text-white opacity-0 transition-all group-hover:opacity-100">
-                <h3 className="text-2xl font-bold">Job Dashboard</h3>
+                <h3 className="text-2xl font-bold">Job Board</h3>
                 <p className="mt-2 text-sm">Explore job opportunities and apply with ease.</p>
               </div>
             </Link>
