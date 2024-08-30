@@ -1,33 +1,25 @@
 // middleware.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-
-// Define the list of paths that require authentication
-const protectedPaths = ['/dashboard', '/profile', '/job-board'];
+import { NextRequest } from 'next/server';
 
 export async function middleware(req: NextRequest) {
-  // Check if the request is to a protected path
-  if (protectedPaths.some((path) => req.nextUrl.pathname.startsWith(path))) {
-    const res = NextResponse.next();
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
+  
+  // Check if user is authenticated
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-    // Use Supabase helper to get the user
-    const supabase = createMiddlewareClient({ req, res });
-    const { data: { user } } = await supabase.auth.getUser();
-
-    // If no user is found, redirect to the login page
-    if (!user) {
-      const redirectUrl = req.nextUrl.clone();
-      redirectUrl.pathname = '/login';
-      redirectUrl.searchParams.set('redirectedFrom', req.nextUrl.pathname);
-      return NextResponse.redirect(redirectUrl);
-    }
+  // If there is no session, redirect to login
+  if (!session && req.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.redirect(new URL('/login', req.url));
   }
 
-  // Allow the request to proceed if authenticated or not on a protected path
-  return NextResponse.next();
+  return res;
 }
 
-// Configure paths where middleware should run
 export const config = {
-  matcher: ['/dashboard/:path*', '/profile/:path*', '/job-board/:path*'],
+  matcher: ['/dashboard/:path*', '/job-board/:path*'], // Protect both dashboard and job-board routes
 };
