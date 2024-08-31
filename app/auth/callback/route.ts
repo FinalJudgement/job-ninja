@@ -16,6 +16,7 @@ export async function GET(request: Request) {
   }
 
   if (redirectTo) {
+    console.log(`code: ${code}`)
     return NextResponse.redirect(`${origin}${redirectTo}`);
   }
 
