@@ -12,11 +12,15 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = createClient();
-    await supabase.auth.exchangeCodeForSession(code);
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      console.error("Error exchanging code for session:", error.message);
+      return NextResponse.redirect(`${origin}/signup?error=auth`);
+    }
   }
 
   if (redirectTo) {
-    console.log(`code: ${code}`)
+    console.log(`code: ${code}`);
     return NextResponse.redirect(`${origin}${redirectTo}`);
   }
 
