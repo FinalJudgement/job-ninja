@@ -6,13 +6,17 @@ export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({ req, res });
 
-  // Check if user is authenticated
   const {
     data: { session },
+    error,
   } = await supabase.auth.getSession();
 
-  // If there is no session, redirect to login
-  if (!session && req.nextUrl.pathname.startsWith("/dashboard")) {
+  if (error) {
+    console.error("Error getting session:", error.message);
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
+  if (!session) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
