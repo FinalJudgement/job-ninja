@@ -3,6 +3,8 @@ import { createClient } from "@/utils/supabase/server";
 import Header from "@/components/Header";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { NextResponse } from "next/server";
+import { redirect } from "next/navigation"; // Import redirect function
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
@@ -13,8 +15,19 @@ export default async function Index() {
       return false;
     }
   };
-
   const isSupabaseConnected = canInitSupabaseClient();
+
+  const supabase = createClient(); // Initialize Supabase client
+
+  // Fetch user session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  // Redirect if user is logged in
+  if (session) {
+    return redirect("/dashboard"); // Redirect to dashboard if logged in
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -91,7 +104,7 @@ export default async function Index() {
         <section className="py-12 md:py-24">
           <div className="container m-auto grid grid-cols-1 gap-6 px-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4 lg:gap-10">
             <Link
-              href="/portfolio"
+              href="#"
               className="group relative overflow-hidden rounded-lg bg-muted/50 transition-all hover:scale-105"
               prefetch={false}
             >

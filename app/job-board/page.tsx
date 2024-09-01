@@ -1,13 +1,19 @@
 import { createClient } from "@/utils/supabase/server";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function JobBoard() {
   const canInitSupabaseClient = () => {
-    
     try {
       createClient();
       return true;
@@ -26,7 +32,9 @@ export default function JobBoard() {
             <AvatarFallback>AC</AvatarFallback>
           </Avatar>
           <div className="text-center">
-            <div className="text-lg font-semibold text-[#333]">Amelia Cooper</div>
+            <div className="text-lg font-semibold text-[#333]">
+              Amelia Cooper
+            </div>
             <div className="text-sm text-[#666]">Software Engineer</div>
           </div>
         </div>
@@ -38,7 +46,8 @@ export default function JobBoard() {
             <span className="font-medium">Phone:</span> (123) 456-7890
           </div>
           <div>
-            <span className="font-medium">College:</span> University of California, Berkeley
+            <span className="font-medium">College:</span> University of
+            California, Berkeley
           </div>
           <div>
             <span className="font-medium">Current Employer:</span> Acme Inc.
@@ -55,20 +64,35 @@ export default function JobBoard() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="bg-[#333] text-white">Job Title</TableHead>
-                    <TableHead className="bg-[#333] text-white">Company</TableHead>
-                    <TableHead className="bg-[#333] text-white">Status</TableHead>
-                    <TableHead className="bg-[#333] text-white">Details</TableHead>
+                    <TableHead className="bg-[#333] text-white">
+                      Job Title
+                    </TableHead>
+                    <TableHead className="bg-[#333] text-white">
+                      Company
+                    </TableHead>
+                    <TableHead className="bg-[#333] text-white">
+                      Status
+                    </TableHead>
+                    <TableHead className="bg-[#333] text-white">
+                      Details
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
                     <TableCell className="bg-white">
-                      <div className="font-medium text-[#333]">Full-Stack Developer</div>
+                      <div className="font-medium text-[#333]">
+                        Full-Stack Developer
+                      </div>
                     </TableCell>
-                    <TableCell className="bg-white text-[#333]">Acme Inc</TableCell>
+                    <TableCell className="bg-white text-[#333]">
+                      Acme Inc
+                    </TableCell>
                     <TableCell className="bg-white">
-                      <Badge variant="secondary" className="bg-[#ffd700] text-white px-3 py-1 rounded-full">
+                      <Badge
+                        variant="secondary"
+                        className="bg-[#ffd700] text-white px-3 py-1 rounded-full"
+                      >
                         Pending
                       </Badge>
                     </TableCell>
@@ -80,11 +104,18 @@ export default function JobBoard() {
                   </TableRow>
                   <TableRow>
                     <TableCell className="bg-white">
-                      <div className="font-medium text-[#333]">UI/UX Designer</div>
+                      <div className="font-medium text-[#333]">
+                        UI/UX Designer
+                      </div>
                     </TableCell>
-                    <TableCell className="bg-white text-[#333]">Globex Corp</TableCell>
+                    <TableCell className="bg-white text-[#333]">
+                      Globex Corp
+                    </TableCell>
                     <TableCell className="bg-white">
-                      <Badge variant="destructive" className="bg-[#ff0000] text-white px-3 py-1 rounded-full">
+                      <Badge
+                        variant="destructive"
+                        className="bg-[#ff0000] text-white px-3 py-1 rounded-full"
+                      >
                         Rejected
                       </Badge>
                     </TableCell>
@@ -96,11 +127,18 @@ export default function JobBoard() {
                   </TableRow>
                   <TableRow>
                     <TableCell className="bg-white">
-                      <div className="font-medium text-[#333]">Backend Engineer</div>
+                      <div className="font-medium text-[#333]">
+                        Backend Engineer
+                      </div>
                     </TableCell>
-                    <TableCell className="bg-white text-[#333]">Stark Industries</TableCell>
+                    <TableCell className="bg-white text-[#333]">
+                      Stark Industries
+                    </TableCell>
                     <TableCell className="bg-white">
-                      <Badge variant="secondary" className="bg-[#ffd700] text-white px-3 py-1 rounded-full">
+                      <Badge
+                        variant="secondary"
+                        className="bg-[#ffd700] text-white px-3 py-1 rounded-full"
+                      >
                         Pending
                       </Badge>
                     </TableCell>
@@ -112,11 +150,18 @@ export default function JobBoard() {
                   </TableRow>
                   <TableRow>
                     <TableCell className="bg-white">
-                      <div className="font-medium text-[#333]">Frontend Developer</div>
+                      <div className="font-medium text-[#333]">
+                        Frontend Developer
+                      </div>
                     </TableCell>
-                    <TableCell className="bg-white text-[#333]">Wayne Enterprises</TableCell>
+                    <TableCell className="bg-white text-[#333]">
+                      Wayne Enterprises
+                    </TableCell>
                     <TableCell className="bg-white">
-                      <Badge variant="destructive" className="bg-[#ff0000] text-white px-3 py-1 rounded-full">
+                      <Badge
+                        variant="destructive"
+                        className="bg-[#ff0000] text-white px-3 py-1 rounded-full"
+                      >
                         Rejected
                       </Badge>
                     </TableCell>
@@ -128,11 +173,18 @@ export default function JobBoard() {
                   </TableRow>
                   <TableRow>
                     <TableCell className="bg-white">
-                      <div className="font-medium text-[#333]">Full-Stack Developer</div>
+                      <div className="font-medium text-[#333]">
+                        Full-Stack Developer
+                      </div>
                     </TableCell>
-                    <TableCell className="bg-white text-[#333]">Stark Industries</TableCell>
+                    <TableCell className="bg-white text-[#333]">
+                      Stark Industries
+                    </TableCell>
                     <TableCell className="bg-white">
-                      <Badge variant="secondary" className="bg-[#ffd700] text-white px-3 py-1 rounded-full">
+                      <Badge
+                        variant="secondary"
+                        className="bg-[#ffd700] text-white px-3 py-1 rounded-full"
+                      >
                         Pending
                       </Badge>
                     </TableCell>
@@ -144,11 +196,18 @@ export default function JobBoard() {
                   </TableRow>
                   <TableRow>
                     <TableCell className="bg-white">
-                      <div className="font-medium text-[#333]">Data Scientist</div>
+                      <div className="font-medium text-[#333]">
+                        Data Scientist
+                      </div>
                     </TableCell>
-                    <TableCell className="bg-white text-[#333]">Umbrella Corporation</TableCell>
+                    <TableCell className="bg-white text-[#333]">
+                      Umbrella Corporation
+                    </TableCell>
                     <TableCell className="bg-white">
-                      <Badge variant="secondary" className="bg-[#00ff00] text-white px-3 py-1 rounded-full">
+                      <Badge
+                        variant="secondary"
+                        className="bg-[#00ff00] text-white px-3 py-1 rounded-full"
+                      >
                         Accepted
                       </Badge>
                     </TableCell>
@@ -165,5 +224,5 @@ export default function JobBoard() {
         </div>
       </div>
     </div>
-  )
+  );
 }
