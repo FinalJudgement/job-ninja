@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { NextResponse } from "next/server";
-import { redirect } from "next/navigation"; // Import redirect function
+import { redirect } from "next/navigation";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
@@ -17,16 +17,14 @@ export default async function Index() {
   };
   const isSupabaseConnected = canInitSupabaseClient();
 
-  const supabase = createClient(); // Initialize Supabase client
+  const supabase = createClient();
 
-  // Fetch user session
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  // Redirect if user is logged in
   if (session) {
-    return redirect("/dashboard"); // Redirect to dashboard if logged in
+    return redirect("/dashboard"); 
   }
 
   return (
